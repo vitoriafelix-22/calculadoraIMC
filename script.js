@@ -1,13 +1,19 @@
 setTimeout(criarHtml, 100)
 
 function criarHtml() {
+    criarHead();
+    criarBody();
+    
+}
+
+function criarHead() {
     const html = document.getElementsByTagName('html')[0];
 
     const head = document.getElementsByTagName('head')[0];
 
     const metaCharset = document.createElement('meta');
     metaCharset.setAttribute('charset', 'UTF-8');
-    head.appendChild(metaCharset);
+    document.head.appendChild(metaCharset);
 
     const metaCompatible = document.createElement('meta');
     metaCompatible.setAttribute('http-equiv', 'X-UA-Compatible');
@@ -24,19 +30,26 @@ function criarHtml() {
     head.appendChild(title);
 
     html.appendChild(head);
+}
 
+function criarBody() {
+    const html = document.getElementsByTagName('html')[0];
     const body = document.getElementsByTagName('body')[0];
 
     const h1 = document.createElement('h1');
     h1.textContent = 'Calculadora de IMC';
+    h1.style.textAlign = 'center';
     body.appendChild(h1);
 
     const form = document.createElement('form');
     form.setAttribute('id', 'formulario')
-
+    form.style.display = 'flex';
+    form.style.flexDirection = 'column';
+  
     const labelNome = document.createElement('label');
     labelNome.setAttribute('for', 'nome');
     labelNome.textContent = 'Nome:';
+    labelNome.style.marginTop = '10px'; // Adicionando margem ao label
     form.appendChild(labelNome);
 
     const inputNome = document.createElement('input');
@@ -44,11 +57,14 @@ function criarHtml() {
     inputNome.setAttribute('id', 'nome');
     inputNome.setAttribute('name', 'nome');
     inputNome.setAttribute('required', 'true');
+    inputNome.style.marginBottom = '10px'; // Adicionando margem ao input
+    inputNome.style.borderRadius = '5px'; // Adicionando borda ao input
     form.appendChild(inputNome);
 
     const labelIdade = document.createElement('label');
     labelIdade.setAttribute('for', 'idade');
     labelIdade.textContent = 'Idade:';
+    labelIdade.style.marginTop = '10px'; // Adicionando margem ao label
     form.appendChild(labelIdade);
 
     const inputIdade = document.createElement('input');
@@ -56,11 +72,14 @@ function criarHtml() {
     inputIdade.setAttribute('id', 'idade');
     inputIdade.setAttribute('name', 'idade');
     inputIdade.setAttribute('required', 'true');
+    inputIdade.style.marginBottom = '10px'; // Adicionando margem ao input
+    inputIdade.style.borderRadius = '5px'; // Adicionando borda ao input
     form.appendChild(inputIdade);
 
     const labelPeso = document.createElement('label');
     labelPeso.setAttribute('for', 'peso');
     labelPeso.textContent = 'Peso (kg):';
+    labelPeso.style.marginTop = '10px'; // Adicionando margem ao label
     form.appendChild(labelPeso);
 
     const inputPeso = document.createElement('input');
@@ -68,17 +87,22 @@ function criarHtml() {
     inputPeso.setAttribute('id', 'peso');
     inputPeso.setAttribute('name', 'peso');
     inputPeso.setAttribute('required', 'true');
+    inputPeso.style.marginBottom = '10px'; // Adicionando margem ao input
+    inputPeso.style.borderRadius = '5px'; // Adicionando borda ao input
     form.appendChild(inputPeso);
 
     const labelAltura = document.createElement('label');
     labelAltura.setAttribute('for', 'altura');
     labelAltura.textContent = 'Altura (m):';
+    labelAltura.style.marginTop = '10px'; // Adicionando margem ao label
     form.appendChild(labelAltura);
 
     const inputAltura = document.createElement('input');
     inputAltura.setAttribute('type', 'number');
     inputAltura.setAttribute('id', 'altura');
     inputAltura.setAttribute('name', 'altura');
+    inputAltura.style.marginBottom = '10px'; // Adicionando margem ao input
+    inputAltura.style.borderRadius = '5px'; // Adicionando borda ao input
     form.appendChild(inputAltura);
 
     const botao = document.createElement('button');
@@ -122,8 +146,6 @@ function criarHtml() {
 
     html.appendChild(body);
 }
-
-
 
 function addElementoNaLista(obj) {
     obj.idade = obj.idade.toString().substring(0, 3)
